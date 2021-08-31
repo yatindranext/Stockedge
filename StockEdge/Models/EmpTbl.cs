@@ -23,5 +23,8 @@ namespace StockEdge.Models
         public Nullable<int> DepartmentID { get; set; }
     
         public virtual EmpDepTbl EmpDepTbl { get; set; }
+
+        public int Year { get; set; }
+        public int Month { get; set; }
     }
 }

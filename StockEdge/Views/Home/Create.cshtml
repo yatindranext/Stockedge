@@ -92,7 +92,7 @@
 @Scripts.Render("~/bundles/jqueryval")
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <scripts>
+    <script>
 
         $(document).ready(function () {
         $(".datepicker").datepicker({
@@ -102,51 +102,74 @@
         });
         });
 
-    </scripts>
+    </script>
 
     <script>
 
-        //function remove(id, event, th, tableid = 0) {
-
-        //    $('#' + id).remove();
-
-        //    if (tableid != 0) {
-        //        $.ajax({
-        //            type: "post",
-        //            url: "../Home/Submit",
-        //            dataType: "json",
-        //            contentType: "application/json; charset=utf-8",
-        //            data: JSON.stringify({ tableid: tableid }),
-        //            processData: false,
-        //            success: function (res) {
+        function saveCustoms() {
+            debugger
+            var empstatus = false;
+            if ($(`#IsCurrentEmp`).is(':checked')) {
+                empstatus = true;
+            }
+            if ($('#Name').val() === '' || $('#Address').val() === '' || $('#DateOfJoining').val() === '' || $('#AnnualSalary').val() === "") {
+                return false;
+            }
 
 
-        //                if (res.Status == 1) {
-        //                    $.unblockUI();
-        //                    $('#spinner').hide();
-        //                    initializeToastr();
-        //                    toastr["success"](res.Message, "Success");
-        //                    setTimeout(function () {
-        //                        location.reload();
-        //                    }, 1000);
-        //                }
-        //                else {
-
-        //                    $.unblockUI();
-        //                    $('#spinner').hide();
-        //                    initializeToastr();
-        //                    toastr["error"](res.Message, "Info");
-        //                }
 
 
-        //            },
-        //            error: function (e) {
-        //                $.unblockUI();
-        //                $('#spinner').hide();
-        //            }
-        //        });
-        //    }
-        //}
+            var data = {
+                Name: $('#Name').val(),
+                Address: $('#Address').val(),
+                DateOfJoining: $('#DateOfJoining').val(),
+                IsCurrentEmp: empstatus,
+                AnnualSalary: $('#AnnualSalary').val(),
+                DepartmentID: $('#List').val()
+            };
+
+            $.post("@Url.Action("Submit", "Home")", data, function (result) {
+
+                location.reload();
+            })
+
+            //if (data != '') {
+            //    $.ajax({
+            //        type: "post",
+            //        url: "../Home/Submit",
+            //        dataType: "Html",
+            //        contentType: "application/json; charset=utf-8",
+            //        data: data,
+            //        processData: false,
+            //        success: function (res) {
+
+
+            //            if (res.Status == 1) {
+            //                $.unblockUI();
+            //                $('#spinner').hide();
+            //                initializeToastr();
+            //                toastr["success"](res.Message, "Success");
+            //                setTimeout(function () {
+            //                    location.reload();
+            //                }, 1000);
+            //            }
+            //            else {
+
+            //                $.unblockUI();
+            //                $('#spinner').hide();
+            //                initializeToastr();
+            //                toastr["error"](res.Message, "Info");
+            //            }
+
+
+            //        },
+            //        error: function (e) {
+            //            $.unblockUI();
+            //            $('#spinner').hide();
+            //        }
+            //    });
+            //}
+        }
     </script>
 
 }
