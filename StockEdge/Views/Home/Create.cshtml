@@ -105,47 +105,48 @@
     </scripts>
 
     <script>
-        function remove(id, event, th, tableid = 0) {
 
-            $('#' + id).remove();
+        //function remove(id, event, th, tableid = 0) {
 
-            if (tableid != 0) {
-                $.ajax({
-                    type: "post",
-                    url: "../Home/Submit",
-                    dataType: "json",
-                    contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify({ tableid: tableid }),
-                    processData: false,
-                    success: function (res) {
+        //    $('#' + id).remove();
 
-
-                        if (res.Status == 1) {
-                            $.unblockUI();
-                            $('#spinner').hide();
-                            initializeToastr();
-                            toastr["success"](res.Message, "Success");
-                            setTimeout(function () {
-                                location.reload();
-                            }, 1000);
-                        }
-                        else {
-
-                            $.unblockUI();
-                            $('#spinner').hide();
-                            initializeToastr();
-                            toastr["error"](res.Message, "Info");
-                        }
+        //    if (tableid != 0) {
+        //        $.ajax({
+        //            type: "post",
+        //            url: "../Home/Submit",
+        //            dataType: "json",
+        //            contentType: "application/json; charset=utf-8",
+        //            data: JSON.stringify({ tableid: tableid }),
+        //            processData: false,
+        //            success: function (res) {
 
 
-                    },
-                    error: function (e) {
-                        $.unblockUI();
-                        $('#spinner').hide();
-                    }
-                });
-            }
-        }
+        //                if (res.Status == 1) {
+        //                    $.unblockUI();
+        //                    $('#spinner').hide();
+        //                    initializeToastr();
+        //                    toastr["success"](res.Message, "Success");
+        //                    setTimeout(function () {
+        //                        location.reload();
+        //                    }, 1000);
+        //                }
+        //                else {
+
+        //                    $.unblockUI();
+        //                    $('#spinner').hide();
+        //                    initializeToastr();
+        //                    toastr["error"](res.Message, "Info");
+        //                }
+
+
+        //            },
+        //            error: function (e) {
+        //                $.unblockUI();
+        //                $('#spinner').hide();
+        //            }
+        //        });
+        //    }
+        //}
     </script>
 
 }
